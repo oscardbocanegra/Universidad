@@ -15,6 +15,48 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#sobre-mi .container {
+    display: flex;
+    align-items: center;
+}
+
+#sobre-mi .foto {
+    flex: 1;
+    /* Ajusta el tamaño de la imagen según necesites */
+    max-width: 50%;
+}
+
+#sobre-mi .content {
+    flex: 1;
+    padding-left: 20px; /* Añade un poco de espacio entre la foto y el texto */
+}
+
+#educacion .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#educacion .content {
+    flex: 1;
+    /* Ajusta el padding según necesites */
+    padding-right: 20px;
+}
+
+#educacion .collage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 50%;
+}
+
+#educacion .collage img {
+    width: calc(50% - 10px); /* Ajusta el tamaño de las imágenes */
+    margin: 5px;
+    height: auto;
+}
+
+
+
 nav ul {
     list-style: none;
     padding: 0;
