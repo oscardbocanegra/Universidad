@@ -1,7 +1,5 @@
 # reloj.py
 # Programa para dibujar un reloj analógico estático usando OpenGL y GLUT en Python
-# Autor: [Tu Nombre]
-# Fecha: 2025-05-18
 #
 # Este programa crea una ventana donde se dibuja un reloj analógico con las marcas de las horas y manecillas estáticas.
 
