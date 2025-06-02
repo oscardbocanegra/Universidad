@@ -1,3 +1,23 @@
+"""
+main.py
+
+Este script crea una ventana OpenGL con cuatro vistas simultáneas de un cubo, cada una utilizando un tipo diferente de proyección:
+
+1. Proyección ortogonal
+2. Proyección gabinete
+3. Proyección perspectiva simétrica
+4. Proyección perspectiva oblicua
+
+El cubo se dibuja con colores distintos en cada cara y se rota para resaltar la tridimensionalidad y las diferencias entre las proyecciones. No se utiliza gluLookAt ni se mueve la posición del ojo, cumpliendo con la restricción del enunciado.
+
+Requisitos:
+- Python
+- PyOpenGL
+- numpy
+
+Autor: [Tu Nombre]
+Fecha: 2025-06-01
+"""
 import sys
 from OpenGL.GL import *
 from OpenGL.GLU import *
@@ -7,11 +27,9 @@ import numpy as np
 # Tamaño de la ventana
 width, height = 800, 800
 
-# Dibuja un cubo centrado en el origen
-def draw_cube():
-    glutSolidCube(1)
-
+# Dibuja un cubo centrado en el origen con colores en cada cara
 def draw_cube_colored():
+    """Dibuja un cubo con colores diferentes en cada cara."""
     glBegin(GL_QUADS)
     # Cara frontal (roja)
     glColor3f(1, 0, 0)
@@ -53,6 +71,7 @@ def draw_cube_colored():
 
 # Proyección ortogonal
 def set_ortho():
+    """Configura una proyección ortogonal."""
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     glOrtho(-2, 2, -2, 2, 1, 10)
@@ -62,6 +81,7 @@ def set_ortho():
 
 # Proyección gabinete
 def set_cabinet():
+    """Configura una proyección gabinete (oblicua con ángulo de 45° y escala 0.5)."""
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     angle = np.deg2rad(45)
@@ -80,6 +100,7 @@ def set_cabinet():
 
 # Proyección perspectiva simétrica
 def set_perspective():
+    """Configura una proyección perspectiva simétrica usando gluPerspective."""
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     gluPerspective(60, 1, 1, 10)
@@ -89,6 +110,7 @@ def set_perspective():
 
 # Proyección perspectiva oblicua
 def set_oblique():
+    """Configura una proyección perspectiva oblicua (oblicua con ángulo de 30° y escala 1.0)."""
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     angle = np.deg2rad(30)
@@ -106,6 +128,7 @@ def set_oblique():
     glTranslatef(0, 0, -5)
 
 def display():
+    """Función principal de dibujo: divide la ventana en cuatro viewports y dibuja el cubo en cada proyección."""
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glEnable(GL_DEPTH_TEST)
 
@@ -144,6 +167,7 @@ def display():
     glutSwapBuffers()
 
 def main():
+    """Inicializa GLUT y ejecuta el bucle principal de la ventana."""
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH)
     glutInitWindowSize(width, height)
